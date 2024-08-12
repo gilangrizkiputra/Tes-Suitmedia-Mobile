@@ -27,9 +27,10 @@ class FirstScreenViewModel : ViewModel() {
 
     fun checkPalindrome(context: Context) {
         viewModelScope.launch {
-            val reversedInputString = palindrome.value.reversed()
+            val normalizerString = palindrome.value.replace(" ", "").lowercase()
+            val reversedInputString = normalizerString.reversed()
 
-            if (palindrome.value == reversedInputString) {
+            if (normalizerString == reversedInputString) {
                 Toast.makeText(context, "isPalindrome", Toast.LENGTH_LONG).show()
             } else {
                 Toast.makeText(context, "not palindrome", Toast.LENGTH_LONG).show()
